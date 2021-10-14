@@ -5,14 +5,19 @@
 
 ## Deskripsi Dataset 
 
-Dataset yang digunakan dalam projek ini merupakan COVID-19 Radiography Database
-COVID-19 Chest X-ray Database yang bersifat publik dan dapat diakses
-melalui situs www.kaggle.com. Dataset berupa citra rontgen paru-paru manusia yang dihimpun oleh 
-Italian Society of Medical Interventional Radiology (SIRM) sejak akhir 2019 hingga awal 2020.
-terdiri atas 3 kelas dengan jumlah total 2905 citra, dengan detail sebaigai berikut : 
-1. COVID            : 219 images 
-2. NORMAL           : 1341 images
-3. VIRAL PNEUMONIA  : 1345 images 
+Dalam penyusunan project ini menggunakan 2 dataset dari sumber yang berbeda yang nantinya akan dikombinasikan; 
+Dataset pertama berasal dari penelitian Tulin Otzurk, dkk yang berjudul [Automated detection of COVID-19 cases using deep neural networks with X-ray images](https://www.sciencedirect.com/science/article/abs/pii/S0010482520301621?via%3Dihub) pada tahun 2020
+Dataset memiliki jumlah total sebanyak 1125 image yang terdiri atas 3 kelas dengan rincian :
+1. Covid-19     : 125 images
+2. No Findings  : 500 images
+3. Pneumonia    : 500 images
+
+Kemudian, dataset kedua yang digunakan dalam pembuatan project ini adalah COVID-19 Chest X-ray yang diakses melalui penelitian dari K. Ashif Iqbal, dkk [CoroNet: A deep neural network for detection and diagnosis of COVID-19 from chest x-ray images](https://www.sciencedirect.com/science/article/abs/pii/S0169260720314140?via%3Dihub) dengan tahun yang sama
+Dataset terdiri atas 4 kelas dengan jumlah total 1638 image, dengan detail sebagai berikut : 
+1. Covid                : 320 images 
+2. Normal               : 445 images
+3. Pneumonia Bacterial  : 449 images 
+4. Pneumonia Viral      : 424 images
 
 ### Teknik Deep Learning yang digunakan
 
@@ -25,7 +30,8 @@ model dilatih dengan menggunakan google colabolatory.
 
 ### Jurnal referensi 
 
-* Jurnal referensi pada projek ini berjudul [Penerapan Convolutional Neural Network pada Citra Rontgen Paru-Paru  untuk Deteksi SARS-CoV-2](http://jurnal.iaii.or.id/index.php/RESTI/article/view/3153)
+* Jurnal referensi pada projek ini berjudul [Attention-based VGG-16 model for COVID-19 chest X-ray image classification](https://link.springer.com/article/10.1007/s10489-020-02055-x)
+Sitaula, C., Hossain, M.B. Attention-based VGG-16 model for COVID-19 chest X-ray image classification. Appl Intell 51, 2850–2863 (2021). https://doi.org/10.1007/s10489-020-02055-x
 
 ### Cara Pengeksekusian Program
 
