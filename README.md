@@ -11,6 +11,7 @@ Dataset memiliki jumlah total sebanyak 1125 image yang terdiri atas 3 kelas deng
 1. Covid-19     : 125 images
 2. No Findings  : 500 images
 3. Pneumonia    : 500 images
+dataset : https://github.com/drkhan107/CoroNet
 
 Kemudian, dataset kedua yang digunakan dalam pembuatan project ini adalah COVID-19 Chest X-ray yang diakses melalui penelitian dari K. Ashif Iqbal, dkk [CoroNet: A deep neural network for detection and diagnosis of COVID-19 from chest x-ray images](https://www.sciencedirect.com/science/article/abs/pii/S0169260720314140?via%3Dihub) dengan tahun yang sama
 Dataset terdiri atas 4 kelas dengan jumlah total 1638 image, dengan detail sebagai berikut : 
@@ -18,6 +19,7 @@ Dataset terdiri atas 4 kelas dengan jumlah total 1638 image, dengan detail sebag
 2. Normal               : 445 images
 3. Pneumonia Bacterial  : 449 images 
 4. Pneumonia Viral      : 424 images
+dataset : https://github.com/muhammedtalo/COVID-19
 
 ### Teknik Deep Learning yang digunakan
 
