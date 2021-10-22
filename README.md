@@ -11,7 +11,7 @@ Dataset memiliki jumlah total sebanyak 1125 image yang terdiri atas 3 kelas deng
 1. Covid-19     : 125 images
 2. No Findings  : 500 images
 3. Pneumonia    : 500 images
-dataset : https://github.com/drkhan107/CoroNet
+dataset : https://github.com/muhammedtalo/COVID-19
 
 Kemudian, dataset kedua yang digunakan dalam pembuatan project ini adalah COVID-19 Chest X-ray yang diakses melalui penelitian dari K. Ashif Iqbal, dkk [CoroNet: A deep neural network for detection and diagnosis of COVID-19 from chest x-ray images](https://www.sciencedirect.com/science/article/abs/pii/S0169260720314140?via%3Dihub) dengan tahun yang sama
 Dataset terdiri atas 4 kelas dengan jumlah total 1638 image, dengan detail sebagai berikut : 
@@ -19,7 +19,7 @@ Dataset terdiri atas 4 kelas dengan jumlah total 1638 image, dengan detail sebag
 2. Normal               : 445 images
 3. Pneumonia Bacterial  : 449 images 
 4. Pneumonia Viral      : 424 images
-dataset : https://github.com/muhammedtalo/COVID-19
+dataset : https://github.com/drkhan107/CoroNet
 
 ### Teknik Deep Learning yang digunakan
 
@@ -49,7 +49,7 @@ Kontributor dalam projek ini yaitu :
 ## Acknowledgments
 
 Inspiration, code snippets, etc.
-* [Covid19 Radiography Database](https://www.kaggle.com/tawsifurrahman/covid19-radiography-database)
+* [Covid19 Radiography Dataset](Attention-based VGG-16 model for COVID-19 chest X-ray image classification](https://link.springer.com/article/10.1007/s10489-020-02055-x)
 * [CNN Tensorflow](https://github.com/aymericdamien/TensorFlow-Examples/blob/master/tensorflow_v1/examples/3_NeuralNetworks/convolutional_network.py)
 * [DenseNet Documentation](https://keras.io/api/applications/densenet/)
 * [Resnet Documentation](https://keras.io/api/applications/resnet/)
