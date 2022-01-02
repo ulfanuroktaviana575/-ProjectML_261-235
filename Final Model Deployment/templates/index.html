@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Classification Sars Cov-19 X-Ray</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/css/util.css">
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="static/css/files.css">
+    <!--===============================================================================================-->
+</head>
+
+<body>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <!--title-->
+                <div class="wrap-title">
+                    <span class="login100-form-mytitle">
+                        Classification for COVID-19 Chest X-Ray Image
+                    </span>
+                </div>
+                <!--title end-->
+
+                <!--query form-->
+                <form action="/" method="post" enctype="multipart/form-data">
+                    <!--choose model-->
+                    <div class="wrap-title" align="center">
+                        <label class="form-label">
+                            Pilih Skenario Model:
+                        </label>
+                        <select class="form-select" name="choosen_model">
+                            <option value="cnn_model" selected>Model CNN</option>
+                            <option value="vgg19_model">Model VGG-19</option>
+                            <option value="resnet-inception_model">Model Resnet Inception</option>
+                        </select>
+                    </div>
+                    <!--choose model end-->
+
+                    <!--compare model-->
+                    <div class="wrap-title" align="center">
+                        <label class="form-label">
+                            <br>
+                            Atau pilih Skenario Model untuk dibandingkan:
+                        </label>
+                        <br>
+                        <div class="checkboxes">
+                            <input type="hidden" id="cnn_model" name="compare_model" value="cnn_model"/>
+                            <input type="checkbox" id="cnn_model" name="compare_model" value="cnn_model" checked disabled><label for="cnn_model"> Model CNN</label>
+                            <input type="checkbox" id="vgg19_model" name="compare_model" value="vgg19_model"><label for="vgg19_model"> Model VGG-19</label>
+                            <input type="checkbox" id="resnet-inception_model" name="compare_model" value="resnet-inception_model"><label for="resnet-inception_model"> Model Resnet Inception</label>
+                        </div>
+                    </div>
+                    <!--compare model end-->
+
+                    <!--upload query preview-->
+                    <br><br>
+                    <div align="center" data-tilt>
+                        <img id="image-preview" alt="image preview" />
+                        <br>
+                    </div>
+                    <!--upload query preview end-->
+
+                    <!--query by upload-->
+                    <div align="center">
+                        <span class="login100-form-title">
+                            Upload an Image File
+                        </span>
+                        <div class="container-login100-form-btn">
+                            <div class="wrap-input100 validate-input" data-validate="Image file is required" id="input">
+                                <input class="input100" id="image-source" name="query_img" onchange="previewImage();" type="file"
+                                    alt="Input Image" accept="image/jpeg,image/jpg,image/png">
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                    <i class="fa fa-file" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="container-login100-form-btn">
+                            <button class="login100-form-btn" type="submit">
+                                Execute
+                            </button>
+                        </div>                    
+                    </div>
+                    <!--query by upload end-->
+                    
+                    <!--query by sample-->
+                    <h2 style="padding-left: 10px; padding-top: 10px">
+                        <br>
+                        Select Sample Query (Click on text)
+                    </h2>
+                    <table>
+                        {% for row_num in range(4) %}
+                        <tr>
+                            {% for col_num in range(4) %}
+                            {% with image_index=(col_num + (row_num * 4)) %}
+                            <td>
+                                <div style="text-align: center;">
+                                    {% with static_image_dir='static/db_test_image/' + test_images_names[image_index] %}
+                                    <button name="query_img" value="{{ static_image_dir }}" type="submit">
+                                        {{ test_images_names[image_index] }}
+                                    </button>
+                                    {% endwith %}
+                                </div>
+                                <div class="row" style="padding-bottom: 1%;">
+                                    <div class="column">
+                                        <img style="width: 90%;padding-left: 10%;" src="{{ test_images[image_index] }}"/>
+                                    </div>                                
+                                </div>
+                            </td>
+                            {% endwith %}
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    <!--query by sample end-->
+                </form>
+                <!--query form end-->
+                
+                <!--choose model result-->
+                {% if model_count == 1 %}
+                <div class="wrap-title">
+                    <br><br><br><br>
+                    <span class="login100-form-mytitle">
+                        CLassification Result
+                    </span>
+                    <h1 style="padding-left: 10px;">
+                        Query Image: {{ query_image_name }}
+                    </h1>
+                </div>
+                <div>
+                    <img style="padding-left: 10px;padding-top: 10px;padding-bottom: 10px;width: 70%;" src="{{query_path}}"/>
+                </div>
+                <div class="wrap-title">
+                    <h3 style="padding-left: 10px;">{{ model_name }} Classification Result:</h3>
+                    <h4 style="padding-left: 15px;">
+                        - Class: {{ pred_label }}
+                    </h4>
+                    <h4 style="padding-left: 15px;">- Confidence: {{ pred_conf }}%</h4>
+                    <h4 style="padding-left: 15px;">- Prediction Time: {{ pred_time }}s</h4>
+                </div>
+                <!--choose model result end-->
+
+                <!--compare model result-->
+                {% elif model_count > 1 %}
+                <div class="wrap-title">
+                    <br><br><br><br>
+                    <span class="login100-form-mytitle">
+                        CLassification Result
+                    </span>
+                    <h1 style="padding-left: 10px;">
+                        Query Image: {{ query_image_name }}
+                    </h1>
+                </div>
+                <div>
+                    <img style="padding-left: 10px;padding-top: 10px;padding-bottom: 10px;width: 70%;" src="{{query_path}}"/>
+                </div>
+                <div class="wrap-title">
+                    <h1 style="padding-left: 10px;">
+                        Comparing Model
+                    </h1>
+                    {% for model_name, model_result in compared_result.items() %}
+                    <h3 style="padding-left: 10px;">{{ model_name }} Classification Result:</h3>
+                    <h4 style="padding-left: 15px;">
+                        - Class: {{ model_result[0] }} 
+                        <!--{% if true_label != model_result[0] %} (Miss) {% endif %}-->
+                    </h4>
+                    <h4 style="padding-left: 15px;">- Confidence: {{ model_result[1] }}%</h4>
+                    <h4 style="padding-left: 15px;">- Prediction Time: {{ model_result[2] }}s </h4>
+                    <br>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <!--compare model result end-->
+            </div>
+        </div>
+    </div>
+
+    <!--===============================================================================================-->
+    <script src="static/js/files.js"></script>
+    <!--===============================================================================================-->
+    <script src="static/js/main.js"></script>
+</body>
+</html>
