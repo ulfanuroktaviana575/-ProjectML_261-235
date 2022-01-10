@@ -3,6 +3,11 @@
 
 ![alt text](https://miro.medium.com/max/2625/1*YrvMKrWMhi3HomoiTLPsfw.png) ![alt](https://keras.io/img/logo.png)
 
+## Result Deployment to Heroku
+link heroku : https://cov19-classification-261-235.herokuapp.com/
+
+![Capture norm](https://user-images.githubusercontent.com/48962405/145395738-c1a80496-a5c5-40ec-af2c-8bc784d9baf7.PNG) ![Capture cov](https://user-images.githubusercontent.com/48962405/145395760-a2feec8a-d27a-4081-8cba-146c83b3050a.PNG)
+
 ## Deskripsi Dataset 
 
 Dalam penyusunan project ini menggunakan 2 dataset dari sumber yang berbeda yang nantinya akan dikombinasikan; 
