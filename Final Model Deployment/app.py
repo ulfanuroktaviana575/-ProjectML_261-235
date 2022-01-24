@@ -20,13 +20,13 @@ def add_header(r): #setting cache
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    db_model_dict, random_test_image_dir, random_test_image_name = init_db_values()
+    db_model_dict, random_test_image_dir, random_test_image_name = init_db_values() # dictionary model,citra uji, nama citra uji
     model_count = 0
 
     if request.method == 'POST':
         #  ambil data dari request
-        choosen_model = request.form['choosen_model']
-        compared_model = request.form.getlist('compare_model')
+        choosen_model = request.form['choosen_model'] #model yang dipilih
+        compared_model = request.form.getlist('compare_model') #model yang dibandingkan
 
         try:
             # masuk kesini jika query dari upload
@@ -42,7 +42,7 @@ def index():
         
         true_label = query_img_name.split('-')[0].title()
 
-        # simpan sementara query
+        # simpan sementara query image 
         uploaded_img_path = "static/uploaded/temp" + os.path.splitext(query_img_name)[1]
         img.save(uploaded_img_path)
 
@@ -52,7 +52,7 @@ def index():
             # ambil hasil prediksi berupa label, keyakinan, dan waktu
             pred_label, pred_conf, pred_time = pred_choosen_model(db_model_dict, choosen_model, uploaded_img_path)
             
-            uploaded_img_path = '../' + uploaded_img_path
+            uploaded_img_path = '../' + uploaded_img_path #menampilkan gambar pada result
 
             return render_template(
                 'index.html',
@@ -60,7 +60,7 @@ def index():
                 test_images_names=random_test_image_name,
                 model_name=choosen_model,
                 model_count=model_count,
-                query_path=uploaded_img_path,
+                query_path=uploaded_img_path, #direktori query citra
                 query_image_name=query_img_name,
                 true_label=true_label,
                 pred_label=pred_label,
@@ -98,7 +98,7 @@ def index():
             'index.html',
             test_images=random_test_image_dir,
             test_images_names=random_test_image_name,
-            model_count=model_count,
+            model_count=model_count, #jumlah model untuk pengecekan pada html
             )
 
 # fungsi prediksi
@@ -140,7 +140,7 @@ def init_db_values():
     db_model_dict = {
         'cnn_model':db_model_dir + '/cov-cnn.h5',
         'vgg19_model':db_model_dir + '/cov-vgg19.h5',
-        'resnet-inception_model':db_model_dir + '/cov-resnet-inception.h5',
+        # 'resnet-inception_model':db_model_dir + '/cov-resnet-inception.h5',
         # 'cxr_modul_5':db_model_dir + '/cxr_modul_5.h5',
     }
 

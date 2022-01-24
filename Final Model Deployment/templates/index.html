@@ -36,7 +36,7 @@
                         <select class="form-select" name="choosen_model">
                             <option value="cnn_model" selected>Model CNN</option>
                             <option value="vgg19_model">Model VGG-19</option>
-                            <option value="resnet-inception_model">Model Resnet Inception</option>
+                            <!-- <option value="resnet-inception_model">Model Resnet Inception</option> -->
                         </select>
                     </div>
                     <!--choose model end-->
@@ -49,10 +49,14 @@
                         </label>
                         <br>
                         <div class="checkboxes">
-                            <input type="hidden" id="cnn_model" name="compare_model" value="cnn_model"/>
-                            <input type="checkbox" id="cnn_model" name="compare_model" value="cnn_model" checked disabled><label for="cnn_model"> Model CNN</label>
-                            <input type="checkbox" id="vgg19_model" name="compare_model" value="vgg19_model"><label for="vgg19_model"> Model VGG-19</label>
-                            <input type="checkbox" id="resnet-inception_model" name="compare_model" value="resnet-inception_model"><label for="resnet-inception_model"> Model Resnet Inception</label>
+                            <input type="hidden" id="cnn_model" name="compare_model" value="cnn_model" />
+                            <input type="checkbox" id="cnn_model" name="compare_model" value="cnn_model" checked
+                                disabled><label for="cnn_model"> Model CNN</label>
+                            <input type="checkbox" id="vgg19_model" name="compare_model" value="vgg19_model"><label
+                                for="vgg19_model"> Model VGG-19</label>
+                            <!-- <input type="checkbox" id="resnet-inception_model" name="compare_model" -->
+                            <!-- value="resnet-inception_model"><label for="resnet-inception_model"> Model Resnet -->
+                            <!-- Inception</label> -->
                         </div>
                     </div>
                     <!--compare model end-->
@@ -72,8 +76,8 @@
                         </span>
                         <div class="container-login100-form-btn">
                             <div class="wrap-input100 validate-input" data-validate="Image file is required" id="input">
-                                <input class="input100" id="image-source" name="query_img" onchange="previewImage();" type="file"
-                                    alt="Input Image" accept="image/jpeg,image/jpg,image/png">
+                                <input class="input100" id="image-source" name="query_img" onchange="previewImage();"
+                                    type="file" alt="Input Image" accept="image/jpeg,image/jpg,image/png">
                                 <span class="focus-input100"></span>
                                 <span class="symbol-input100">
                                     <i class="fa fa-file" aria-hidden="true"></i>
@@ -84,10 +88,10 @@
                             <button class="login100-form-btn" type="submit">
                                 Execute
                             </button>
-                        </div>                    
+                        </div>
                     </div>
                     <!--query by upload end-->
-                    
+
                     <!--query by sample-->
                     <h2 style="padding-left: 10px; padding-top: 10px">
                         <br>
@@ -108,8 +112,9 @@
                                 </div>
                                 <div class="row" style="padding-bottom: 1%;">
                                     <div class="column">
-                                        <img style="width: 90%;padding-left: 10%;" src="{{ test_images[image_index] }}"/>
-                                    </div>                                
+                                        <img style="width: 90%;padding-left: 10%;"
+                                            src="{{ test_images[image_index] }}" />
+                                    </div>
                                 </div>
                             </td>
                             {% endwith %}
@@ -120,7 +125,7 @@
                     <!--query by sample end-->
                 </form>
                 <!--query form end-->
-                
+
                 <!--choose model result-->
                 {% if model_count == 1 %}
                 <div class="wrap-title">
@@ -133,7 +138,8 @@
                     </h1>
                 </div>
                 <div>
-                    <img style="padding-left: 10px;padding-top: 10px;padding-bottom: 10px;width: 70%;" src="{{query_path}}"/>
+                    <img style="padding-left: 10px;padding-top: 10px;padding-bottom: 10px;width: 70%;"
+                        src="{{query_path}}" />
                 </div>
                 <div class="wrap-title">
                     <h3 style="padding-left: 10px;">{{ model_name }} Classification Result:</h3>
@@ -157,7 +163,8 @@
                     </h1>
                 </div>
                 <div>
-                    <img style="padding-left: 10px;padding-top: 10px;padding-bottom: 10px;width: 70%;" src="{{query_path}}"/>
+                    <img style="padding-left: 10px;padding-top: 10px;padding-bottom: 10px;width: 70%;"
+                        src="{{query_path}}" />
                 </div>
                 <div class="wrap-title">
                     <h1 style="padding-left: 10px;">
@@ -166,7 +173,7 @@
                     {% for model_name, model_result in compared_result.items() %}
                     <h3 style="padding-left: 10px;">{{ model_name }} Classification Result:</h3>
                     <h4 style="padding-left: 15px;">
-                        - Class: {{ model_result[0] }} 
+                        - Class: {{ model_result[0] }}
                         <!--{% if true_label != model_result[0] %} (Miss) {% endif %}-->
                     </h4>
                     <h4 style="padding-left: 15px;">- Confidence: {{ model_result[1] }}%</h4>
@@ -185,4 +192,5 @@
     <!--===============================================================================================-->
     <script src="static/js/main.js"></script>
 </body>
+
 </html>
